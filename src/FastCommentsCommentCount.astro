@@ -22,7 +22,10 @@ const scriptSrc = `${cdnBase}/js/widget-comment-count.min.js`;
 
     function init() {
         if (window.FastCommentsCommentCount) {
-            window.FastCommentsCommentCount(el, config);
+            var instance = window.FastCommentsCommentCount(el, config);
+            document.addEventListener('astro:before-swap', function() {
+                instance.destroy();
+            }, { once: true });
         } else {
             setTimeout(init, 50);
         }

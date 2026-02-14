@@ -25,9 +25,13 @@ const scriptSrc = `${cdnBase}/js/embed-user-activity.min.js`;
 
     function init() {
         if (window.FastCommentsUserActivity) {
-            window.FastCommentsUserActivity(el, config, function(error) {
+            window.FastCommentsUserActivity(el, config, function(error, instance) {
                 if (error) {
                     console.error('FastComments User Activity Load Failure', error);
+                } else {
+                    document.addEventListener('astro:before-swap', function() {
+                        instance.destroy();
+                    }, { once: true });
                 }
             });
         } else {

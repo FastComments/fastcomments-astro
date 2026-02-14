@@ -22,7 +22,10 @@ const scriptSrc = `${cdnBase}/js/embed-v2.min.js`;
 
     function init() {
         if (window.FastCommentsUI) {
-            window.FastCommentsUI(el, config);
+            var instance = window.FastCommentsUI(el, config);
+            document.addEventListener('astro:before-swap', function() {
+                instance.destroy();
+            }, { once: true });
         } else {
             setTimeout(init, 50);
         }

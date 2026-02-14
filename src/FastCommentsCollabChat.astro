@@ -26,7 +26,10 @@ const scriptSrc = `${cdnBase}/js/embed-collab-chat.min.js`;
         if (window.FastCommentsCollabChat) {
             var targetEl = document.querySelector(target);
             if (targetEl) {
-                window.FastCommentsCollabChat(targetEl, config);
+                var instance = window.FastCommentsCollabChat(targetEl, config);
+                document.addEventListener('astro:before-swap', function() {
+                    instance.destroy();
+                }, { once: true });
             }
         } else {
             setTimeout(init, 50);

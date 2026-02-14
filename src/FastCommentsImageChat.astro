@@ -26,7 +26,10 @@ const scriptSrc = `${cdnBase}/js/embed-image-chat.min.js`;
         if (window.FastCommentsImageChat) {
             var targetEl = document.querySelector(target);
             if (targetEl) {
-                window.FastCommentsImageChat(targetEl, config);
+                var instance = window.FastCommentsImageChat(targetEl, config);
+                document.addEventListener('astro:before-swap', function() {
+                    instance.destroy();
+                }, { once: true });
             }
         } else {
             setTimeout(init, 50);

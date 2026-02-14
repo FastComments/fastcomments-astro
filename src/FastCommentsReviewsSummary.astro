@@ -22,9 +22,13 @@ const scriptSrc = `${cdnBase}/js/embed-reviews-summary.min.js`;
 
     function init() {
         if (window.FastCommentsReviewsSummaryWidget) {
-            window.FastCommentsReviewsSummaryWidget(el, config, function(error) {
+            window.FastCommentsReviewsSummaryWidget(el, config, function(error, instance) {
                 if (error) {
                     console.error('FastComments Reviews Summary Load Failure', error);
+                } else {
+                    document.addEventListener('astro:before-swap', function() {
+                        instance.destroy();
+                    }, { once: true });
                 }
             });
         } else {

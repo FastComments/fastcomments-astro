@@ -22,7 +22,10 @@ const scriptSrc = `${cdnBase}/js/embed-live-chat.min.js`;
 
     function init() {
         if (window.FastCommentsLiveChat) {
-            window.FastCommentsLiveChat(el, config);
+            var instance = window.FastCommentsLiveChat(el, config);
+            document.addEventListener('astro:before-swap', function() {
+                instance.destroy();
+            }, { once: true });
         } else {
             setTimeout(init, 50);
         }
