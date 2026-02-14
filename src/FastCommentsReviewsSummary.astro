@@ -1,0 +1,44 @@
+---
+export interface Props {
+    /** Id that represents you as a customer. */
+    tenantId: string;
+    /** Id that represents the page, if you don't want to tie comments to the page url. */
+    urlId?: string;
+    /** The region your account is in. EU customers should set to 'eu'. */
+    region?: 'eu';
+}
+
+const config = Astro.props;
+const containerId = `fc-rs-${Math.random().toString(36).slice(2, 9)}`;
+const cdnBase = config.region === 'eu' ? 'https://cdn-eu.fastcomments.com' : 'https://cdn.fastcomments.com';
+const scriptSrc = `${cdnBase}/js/embed-reviews-summary.min.js`;
+---
+
+<div id={containerId}></div>
+
+<script define:vars={{ containerId, config, scriptSrc }}>
+(function() {
+    var el = document.getElementById(containerId);
+
+    function init() {
+        if (window.FastCommentsReviewsSummaryWidget) {
+            window.FastCommentsReviewsSummaryWidget(el, config, function(error) {
+                if (error) {
+                    console.error('FastComments Reviews Summary Load Failure', error);
+                }
+            });
+        } else {
+            setTimeout(init, 50);
+        }
+    }
+
+    if (!document.querySelector('script[data-fc-reviews-summary]')) {
+        var script = document.createElement('script');
+        script.src = scriptSrc;
+        script.setAttribute('data-fc-reviews-summary', '');
+        document.head.appendChild(script);
+    }
+
+    init();
+})();
+</script>

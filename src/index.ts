@@ -1,0 +1,8 @@
+export { default as FastComments } from './FastComments.astro';
+export { default as FastCommentsCommentCount } from './FastCommentsCommentCount.astro';
+export { default as FastCommentsCollabChat } from './FastCommentsCollabChat.astro';
+export { default as FastCommentsImageChat } from './FastCommentsImageChat.astro';
+export { default as FastCommentsLiveChat } from './FastCommentsLiveChat.astro';
+export { default as FastCommentsReviewsSummary } from './FastCommentsReviewsSummary.astro';
+export { default as FastCommentsUserActivityFeed } from './FastCommentsUserActivityFeed.astro';
+export type * from 'fastcomments-typescript';
