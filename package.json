@@ -12,10 +12,13 @@
   "keywords": [
     "astro",
     "astro-component",
+    "withastro",
+    "ui",
     "fastcomments",
     "comments",
     "commenting"
   ],
+  "homepage": "https://docs.fastcomments.com/guide-lib-astro.html",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FastComments/fastcomments-astro.git"
