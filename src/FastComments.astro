@@ -1,0 +1,43 @@
+---
+import type { FastCommentsCommentWidgetConfig } from 'fastcomments-typescript';
+
+export interface Props extends FastCommentsCommentWidgetConfig {}
+
+const config: Record<string, unknown> = {};
+for (const [key, value] of Object.entries(Astro.props)) {
+    if (typeof value !== 'function') {
+        config[key] = value;
+    }
+}
+const containerId = `fc-${Math.random().toString(36).slice(2, 9)}`;
+const cdnBase = config.region === 'eu' ? 'https://cdn-eu.fastcomments.com' : 'https://cdn.fastcomments.com';
+const scriptSrc = `${cdnBase}/js/embed-v2.min.js`;
+---
+
+<div id={containerId}></div>
+
+<script define:vars={{ containerId, config, scriptSrc }}>
+(function() {
+    var el = document.getElementById(containerId);
+
+    function init() {
+        if (window.FastCommentsUI) {
+            var instance = window.FastCommentsUI(el, config);
+            document.addEventListener('astro:before-swap', function() {
+                instance.destroy();
+            }, { once: true });
+        } else {
+            setTimeout(init, 50);
+        }
+    }
+
+    if (!document.querySelector('script[data-fc-embed]')) {
+        var script = document.createElement('script');
+        script.src = scriptSrc;
+        script.setAttribute('data-fc-embed', '');
+        document.head.appendChild(script);
+    }
+
+    init();
+})();
+</script>

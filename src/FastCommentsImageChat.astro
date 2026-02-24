@@ -1,0 +1,48 @@
+---
+import type { FastCommentsImageChatWidgetConfig } from 'fastcomments-typescript';
+
+export interface Props extends FastCommentsImageChatWidgetConfig {
+    /** CSS selector for the target image element (e.g. "#my-image"). */
+    target: string;
+}
+
+const { target, ...rest } = Astro.props;
+const config: Record<string, unknown> = {};
+for (const [key, value] of Object.entries(rest)) {
+    if (typeof value !== 'function') {
+        config[key] = value;
+    }
+}
+const containerId = `fc-image-chat-${Math.random().toString(36).slice(2, 9)}`;
+const cdnBase = config.region === 'eu' ? 'https://cdn-eu.fastcomments.com' : 'https://cdn.fastcomments.com';
+const scriptSrc = `${cdnBase}/js/embed-image-chat.min.js`;
+---
+
+<div id={containerId}></div>
+
+<script define:vars={{ containerId, config, scriptSrc, target }}>
+(function() {
+    function init() {
+        if (window.FastCommentsImageChat) {
+            var targetEl = document.querySelector(target);
+            if (targetEl) {
+                var instance = window.FastCommentsImageChat(targetEl, config);
+                document.addEventListener('astro:before-swap', function() {
+                    instance.destroy();
+                }, { once: true });
+            }
+        } else {
+            setTimeout(init, 50);
+        }
+    }
+
+    if (!document.querySelector('script[data-fc-image-chat]')) {
+        var script = document.createElement('script');
+        script.src = scriptSrc;
+        script.setAttribute('data-fc-image-chat', '');
+        document.head.appendChild(script);
+    }
+
+    init();
+})();
+</script>

@@ -1,0 +1,30 @@
+{
+  "name": "fastcomments-astro",
+  "version": "1.0.0",
+  "description": "Astro components for FastComments",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "astro",
+    "astro-component",
+    "fastcomments",
+    "comments",
+    "commenting"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FastComments/fastcomments-astro"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "astro": "^3.0.0 || ^4.0.0 || ^5.0.0"
+  },
+  "dependencies": {
+    "fastcomments-typescript": "^3.0.12"
+  }
+}
