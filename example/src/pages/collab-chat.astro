@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { FastCommentsCollabChat } from 'fastcomments-astro';
+---
+
+<BaseLayout title="Collab Chat Demo">
+  <h1>FastCommentsCollabChat</h1>
+  <p>Enables collaborative commenting on page content. Select text in the article below to leave a comment.</p>
+  <article id="demo-content">
+    <h2>The Rise of Real-Time Collaboration</h2>
+    <p>Real-time collaboration tools have transformed how teams work together. From shared documents to inline commenting, the ability to discuss content in context reduces miscommunication and speeds up decision-making.</p>
+    <p>FastComments Collab Chat brings this experience to any web page. Users can highlight text and attach comments directly to it, creating threaded discussions tied to specific passages.</p>
+  </article>
+  <FastCommentsCollabChat tenantId="demo" target="#demo-content" />
+</BaseLayout>

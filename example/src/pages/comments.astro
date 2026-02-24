@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { FastComments } from 'fastcomments-astro';
+---
+
+<BaseLayout title="FastComments Demo">
+  <h1>FastComments</h1>
+  <p>The main commenting widget. Users can leave comments, reply, vote, and more.</p>
+  <FastComments tenantId="demo" />
+</BaseLayout>

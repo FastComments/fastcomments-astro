@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { FastCommentsCommentCount } from 'fastcomments-astro';
+---
+
+<BaseLayout title="Comment Count Demo">
+  <h1>FastCommentsCommentCount</h1>
+  <p>Displays the comment count for a given page. Useful for showing counts in article listings.</p>
+  <p>This page has <FastCommentsCommentCount tenantId="demo" /> comments.</p>
+</BaseLayout>

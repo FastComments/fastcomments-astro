@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { FastCommentsUserActivityFeed } from 'fastcomments-astro';
+---
+
+<BaseLayout title="User Activity Feed Demo">
+  <h1>FastCommentsUserActivityFeed</h1>
+  <p>Shows a feed of recent activity for a specific user, including their comments and interactions.</p>
+  <FastCommentsUserActivityFeed tenantId="demo" userId="demo:demo-user" />
+</BaseLayout>

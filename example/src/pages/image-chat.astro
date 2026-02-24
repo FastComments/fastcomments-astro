@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { FastCommentsImageChat } from 'fastcomments-astro';
+---
+
+<BaseLayout title="Image Chat Demo">
+  <h1>FastCommentsImageChat</h1>
+  <p>Lets users click on regions of an image to leave comments. Click on the image below to try it.</p>
+  <img id="demo-image" src="/demo-image.svg" alt="Sample image for commenting" />
+  <FastCommentsImageChat tenantId="demo" target="#demo-image" />
+</BaseLayout>
