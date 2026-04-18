@@ -4,7 +4,9 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const url = (href: string) => `${base}${href}`;
+const pathname = Astro.url.pathname.replace(base, "").replace(/\/$/, "") || "/";
 
 const widgets = [
   { href: "/comments", label: "Live Comment Widget", hint: "Full live commenting widget" },
@@ -47,7 +49,7 @@ const flows = [
   <body>
     <div class="fc-shell">
       <aside class="fc-rail">
-        <a class="fc-brand" href="/">
+        <a class="fc-brand" href={url("/")}>
           <img class="fc-brand__logo fc-brand__logo--light" src="https://fastcomments.com/images/svg/v2/logo.svg" alt="FastComments" />
           <img class="fc-brand__logo fc-brand__logo--dark" src="https://fastcomments.com/images/svg/v2/logo_white.svg" alt="" aria-hidden="true" />
           <span class="fc-brand__wordmark">
@@ -60,7 +62,7 @@ const flows = [
           <div class="fc-nav__group">
             <div class="fc-nav__heading"><span>01</span><em>Widgets</em></div>
             {widgets.map((item) => (
-              <a href={item.href} class:list={["fc-nav__item", { "is-active": pathname === item.href }]}>
+              <a href={url(item.href)} class:list={["fc-nav__item", { "is-active": pathname === item.href }]}>
                 <span class="fc-nav__item-label">{item.label}</span>
                 <span class="fc-nav__item-hint">{item.hint}</span>
               </a>
@@ -70,7 +72,7 @@ const flows = [
           <div class="fc-nav__group">
             <div class="fc-nav__heading"><span>02</span><em>Flows &amp; configuration</em></div>
             {flows.map((item) => (
-              <a href={item.href} class:list={["fc-nav__item", { "is-active": pathname === item.href }]}>
+              <a href={url(item.href)} class:list={["fc-nav__item", { "is-active": pathname === item.href }]}>
                 <span class="fc-nav__item-label">{item.label}</span>
                 <span class="fc-nav__item-hint">{item.hint}</span>
               </a>
