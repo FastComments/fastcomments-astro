@@ -16,7 +16,7 @@ const sh = (cmd, cwd = ROOT, env = {}) => {
 };
 
 sh('npm ci', EXAMPLE);
-sh('npx astro build', EXAMPLE, { BUILD_DEMO: '1' });
+sh('./node_modules/.bin/astro build', EXAMPLE, { BUILD_DEMO: '1' });
 
 rmSync(OUT, { recursive: true, force: true });
 renameSync(resolve(EXAMPLE, 'dist'), OUT);
