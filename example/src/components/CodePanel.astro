@@ -1,0 +1,35 @@
+---
+interface Props {
+  label: string;
+  code: string;
+}
+const { label, code } = Astro.props;
+const id = `fc-code-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="fc-code-panel">
+  <div class="fc-code-panel__head">
+    <span class="fc-code-panel__head-label">{label}</span>
+    <button type="button" class="fc-code-panel__copy" data-fc-copy-for={id}>Copy</button>
+  </div>
+  <pre id={id} class="fc-code-panel__body">{code}</pre>
+</div>
+
+<script>
+  (function () {
+    if ((window as any).__fcCopyInit) return;
+    (window as any).__fcCopyInit = true;
+    document.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      if (!t || !t.matches('[data-fc-copy-for]')) return;
+      const id = t.getAttribute('data-fc-copy-for');
+      const pre = id ? document.getElementById(id) : null;
+      if (!pre) return;
+      navigator.clipboard.writeText(pre.textContent || '').then(() => {
+        const prev = t.textContent;
+        t.textContent = 'Copied';
+        setTimeout(() => { t.textContent = prev; }, 1200);
+      }).catch(() => {});
+    });
+  })();
+</script>

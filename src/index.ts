@@ -3,6 +3,9 @@ export { default as FastCommentsCommentCount } from './FastCommentsCommentCount.
 export { default as FastCommentsCollabChat } from './FastCommentsCollabChat.astro';
 export { default as FastCommentsImageChat } from './FastCommentsImageChat.astro';
 export { default as FastCommentsLiveChat } from './FastCommentsLiveChat.astro';
+export { default as FastCommentsRecentComments } from './FastCommentsRecentComments.astro';
+export { default as FastCommentsRecentDiscussions } from './FastCommentsRecentDiscussions.astro';
 export { default as FastCommentsReviewsSummary } from './FastCommentsReviewsSummary.astro';
+export { default as FastCommentsTopPages } from './FastCommentsTopPages.astro';
 export { default as FastCommentsUserActivityFeed } from './FastCommentsUserActivityFeed.astro';
 export type * from 'fastcomments-typescript';

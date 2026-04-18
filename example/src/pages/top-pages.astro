@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastCommentsTopPages } from 'fastcomments-astro';
+
+const code = `---
+import { FastCommentsTopPages } from 'fastcomments-astro';
+---
+
+<FastCommentsTopPages tenantId="demo" />`;
+---
+
+<BaseLayout title="Top Pages FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Widgets <em>/ Top Pages</em></div>
+        <h1 class="fc-demo__title">Top Pages</h1>
+        <p class="fc-demo__subtitle">A ranked list of pages by comment activity. Perfect for blog indexes, community
+          highlights, and editorial dashboards that want to surface what readers are engaging with.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+      </div>
+    </header>
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <FastCommentsTopPages tenantId="demo" />
+    </div>
+
+    <CodePanel label="src/pages/top-pages.astro" code={code} />
+  </div>
+</BaseLayout>

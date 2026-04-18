@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastCommentsRecentDiscussions } from 'fastcomments-astro';
+
+const code = `---
+import { FastCommentsRecentDiscussions } from 'fastcomments-astro';
+---
+
+<FastCommentsRecentDiscussions tenantId="demo" />`;
+---
+
+<BaseLayout title="Recent Discussions FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Widgets <em>/ Recent Discussions</em></div>
+        <h1 class="fc-demo__title">Recent Discussions</h1>
+        <p class="fc-demo__subtitle">The most active threads on a tenant, ranked by recent activity. Great for
+          community landing pages and forum-style indexes.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+      </div>
+    </header>
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <FastCommentsRecentDiscussions tenantId="demo" />
+    </div>
+
+    <CodePanel label="src/pages/recent-discussions.astro" code={code} />
+  </div>
+</BaseLayout>

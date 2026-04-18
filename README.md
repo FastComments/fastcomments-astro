@@ -2,6 +2,18 @@
 
 A fast, full-featured live commenting widget for [Astro](https://astro.build), powered by [FastComments](https://fastcomments.com).
 
+## Live Showcase
+
+To see every widget and flow running locally against the public `demo` tenant, clone the repo and run:
+
+```bash
+cd example
+npm install
+npm run dev
+```
+
+Each component has its own page under `example/src/pages/` that you can copy straight into your own Astro site.
+
 ## Install
 
 ```bash
@@ -57,3 +69,7 @@ cd example && npm install && npm run dev
 ## License
 
 MIT
+
+## Maintenance Status
+
+These components are wrappers around our core VanillaJS components. We can automatically update these components (fix bugs, add features) without publishing this library, so while it may not be published for a while that does not mean FastComments is not under active development! Feel free to check [our blog](https://blog.fastcomments.com/) for updates. Breaking API changes or features will never be shipped to the underlying core library without a version bump in this library.

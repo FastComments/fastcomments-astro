@@ -1,11 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastCommentsImageChat } from 'fastcomments-astro';
+
+const code = `---
 import { FastCommentsImageChat } from 'fastcomments-astro';
 ---
 
-<BaseLayout title="Image Chat Demo">
-  <h1>FastCommentsImageChat</h1>
-  <p>Lets users click on regions of an image to leave comments. Click on the image below to try it.</p>
-  <img id="demo-image" src="/demo-image.svg" alt="Sample image for commenting" />
-  <FastCommentsImageChat tenantId="demo" target="#demo-image" />
+<img id="demo-image" src="/demo-image.svg" alt="" />
+<FastCommentsImageChat tenantId="demo" target="#demo-image" />`;
+---
+
+<BaseLayout title="Image Chat FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Widgets <em>/ Image Chat</em></div>
+        <h1 class="fc-demo__title">Image Chat</h1>
+        <p class="fc-demo__subtitle">Drag to select any region of the image. A threaded discussion gets pinned to the
+          exact region. Ideal for design reviews, bug triage, and creative collaboration.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+      </div>
+    </header>
+
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <img id="demo-image" src="/demo-image.svg" alt="Sample image for commenting" style="max-width: 100%; border-radius: 12px; display: block; margin: 0 auto 20px;" />
+      <FastCommentsImageChat tenantId="demo" target="#demo-image" />
+    </div>
+
+    <CodePanel label="src/pages/image-chat.astro" code={code} />
+  </div>
 </BaseLayout>

@@ -1,10 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastCommentsReviewsSummary } from 'fastcomments-astro';
+
+const code = `---
 import { FastCommentsReviewsSummary } from 'fastcomments-astro';
 ---
 
-<BaseLayout title="Reviews Summary Demo">
-  <h1>FastCommentsReviewsSummary</h1>
-  <p>Displays a star-rating reviews summary for a page, showing the overall rating and breakdown.</p>
-  <FastCommentsReviewsSummary tenantId="demo" />
+<FastCommentsReviewsSummary tenantId="demo" urlId="demo-ratings" />`;
+---
+
+<BaseLayout title="Reviews Summary FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Widgets <em>/ Reviews Summary</em></div>
+        <h1 class="fc-demo__title">Reviews Summary</h1>
+        <p class="fc-demo__subtitle">A compact star-rating aggregate with per-rating breakdown. Drops into product
+          pages, listing previews, or marketing components wherever aggregate sentiment matters more than individual
+          comments.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+      </div>
+    </header>
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <FastCommentsReviewsSummary tenantId="demo" urlId="demo-ratings" />
+    </div>
+
+    <CodePanel label="src/pages/reviews-summary.astro" code={code} />
+  </div>
 </BaseLayout>

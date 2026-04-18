@@ -1,10 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastCommentsLiveChat } from 'fastcomments-astro';
+
+const code = `---
 import { FastCommentsLiveChat } from 'fastcomments-astro';
 ---
 
-<BaseLayout title="Live Chat Demo">
-  <h1>FastCommentsLiveChat</h1>
-  <p>A real-time live chat widget for discussions, support, or community chat.</p>
-  <FastCommentsLiveChat tenantId="demo" />
+<FastCommentsLiveChat tenantId="demo" />`;
+---
+
+<BaseLayout title="Live Chat FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Widgets <em>/ Live Chat</em></div>
+        <h1 class="fc-demo__title">Live Chat</h1>
+        <p class="fc-demo__subtitle">The streaming variant. Tuned for live events, launches, and broadcasts
+          where conversation volume would overwhelm a conventional threaded view.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+        <span class="fc-tag">Mode · streaming</span>
+      </div>
+    </header>
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <FastCommentsLiveChat tenantId="demo" />
+    </div>
+
+    <CodePanel label="src/pages/live-chat.astro" code={code} />
+  </div>
 </BaseLayout>

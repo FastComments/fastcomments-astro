@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastCommentsRecentComments } from 'fastcomments-astro';
+
+const code = `---
+import { FastCommentsRecentComments } from 'fastcomments-astro';
+---
+
+<FastCommentsRecentComments tenantId="demo" />`;
+---
+
+<BaseLayout title="Recent Comments FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Widgets <em>/ Recent Comments</em></div>
+        <h1 class="fc-demo__title">Recent Comments</h1>
+        <p class="fc-demo__subtitle">A cross-site stream of the latest comments across every thread on a tenant. Drop
+          into sidebars and homepages to surface fresh activity at a glance.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+      </div>
+    </header>
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <FastCommentsRecentComments tenantId="demo" />
+    </div>
+
+    <CodePanel label="src/pages/recent-comments.astro" code={code} />
+  </div>
+</BaseLayout>

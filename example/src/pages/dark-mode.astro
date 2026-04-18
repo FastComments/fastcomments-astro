@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastComments } from 'fastcomments-astro';
+
+const code = `---
+import { FastComments } from 'fastcomments-astro';
+---
+
+<FastComments tenantId="demo" hasDarkBackground={true} />`;
+---
+
+<BaseLayout title="Dark Mode FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Flows <em>/ Dark Mode</em></div>
+        <h1 class="fc-demo__title">Dark Mode</h1>
+        <p class="fc-demo__subtitle">The widget responds to the
+          <code style="font-family: var(--fc-mono); color: var(--fc-ink);">hasDarkBackground</code>
+          flag. This showcase&rsquo;s global theme toggle propagates the current value to every widget on the page live.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+      </div>
+    </header>
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <FastComments tenantId="demo" urlId="astro-demo-dark" />
+    </div>
+
+    <CodePanel label="src/pages/dark-mode.astro" code={code} />
+  </div>
+</BaseLayout>

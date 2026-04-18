@@ -1,10 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastCommentsUserActivityFeed } from 'fastcomments-astro';
+
+const code = `---
 import { FastCommentsUserActivityFeed } from 'fastcomments-astro';
 ---
 
-<BaseLayout title="User Activity Feed Demo">
-  <h1>FastCommentsUserActivityFeed</h1>
-  <p>Shows a feed of recent activity for a specific user, including their comments and interactions.</p>
-  <FastCommentsUserActivityFeed tenantId="demo" userId="demo:demo-user" />
+<!-- SSO userId format: \`\${tenantId}:\${appUserId}\` -->
+<FastCommentsUserActivityFeed tenantId="demo" userId="demo:someone@somewhere.com" />`;
+---
+
+<BaseLayout title="User Activity Feed FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Widgets <em>/ Activity Feed</em></div>
+        <h1 class="fc-demo__title">User Activity Feed</h1>
+        <p class="fc-demo__subtitle">A chronological stream of a single user&rsquo;s comments and interactions
+          perfect for profile pages, moderation views, and reputation dashboards.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+        <span class="fc-tag">userId · demo:someone@somewhere.com</span>
+      </div>
+    </header>
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <FastCommentsUserActivityFeed tenantId="demo" userId="demo:someone@somewhere.com" />
+    </div>
+
+    <CodePanel label="src/pages/user-activity-feed.astro" code={code} />
+  </div>
 </BaseLayout>

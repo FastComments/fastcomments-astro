@@ -1,6 +1,6 @@
 {
   "name": "fastcomments-astro",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Astro components for FastComments, a live commenting system.",
   "type": "module",
   "exports": {

@@ -1,10 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastComments } from 'fastcomments-astro';
+
+const code = `---
 import { FastComments } from 'fastcomments-astro';
 ---
 
-<BaseLayout title="FastComments Demo">
-  <h1>FastComments</h1>
-  <p>The main commenting widget. Users can leave comments, reply, vote, and more.</p>
-  <FastComments tenantId="demo" />
+<FastComments tenantId="demo" />`;
+---
+
+<BaseLayout title="Comments FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Widgets <em>/ Live Comment Widget</em></div>
+        <h1 class="fc-demo__title">Live Comment Widget</h1>
+        <p class="fc-demo__subtitle">The flagship live commenting widget. Replies, voting, moderation, media
+          attachments, and realtime sync come bundled in the default configuration.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+      </div>
+    </header>
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <FastComments tenantId="demo" />
+    </div>
+
+    <CodePanel label="src/pages/comments.astro" code={code} />
+  </div>
 </BaseLayout>

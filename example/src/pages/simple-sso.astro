@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CodePanel from '../components/CodePanel.astro';
+import { FastComments } from 'fastcomments-astro';
+
+const simpleSSO = {
+  username: 'Someone',
+  email: 'someone@somewhere.com',
+  avatar: 'https://staticm.fastcomments.com/1582299581264-69384190_3015192525174365_476457575596949504_o.jpg',
+  websiteUrl: 'https://blog.fastcomments.com',
+};
+
+const code = `---
+import { FastComments } from 'fastcomments-astro';
+
+const simpleSSO = {
+  username: 'Someone',
+  email: 'someone@somewhere.com',
+  avatar: 'https://example.com/avatar.jpg',
+};
+---
+
+<FastComments tenantId="demo" urlId="demo-simple-sso" simpleSSO={simpleSSO} />`;
+---
+
+<BaseLayout title="Simple SSO FastComments Astro">
+  <div class="fc-demo">
+    <header class="fc-demo__head">
+      <div>
+        <div class="fc-demo__breadcrumb">Flows <em>/ Simple SSO</em></div>
+        <h1 class="fc-demo__title">Simple SSO</h1>
+        <p class="fc-demo__subtitle">The zero-backend identity flow. Hand the widget a user object with a
+          username and optional metadata. The account is created or updated on first comment.</p>
+      </div>
+      <div class="fc-demo__actions">
+        <span class="fc-tag fc-tag--brand">Mode · Simple</span>
+        <span class="fc-tag">User · {simpleSSO.username}</span>
+      </div>
+    </header>
+    <div class="fc-stage__panel fc-stage__panel--light">
+      <FastComments tenantId="demo" urlId="astro-demo-simple-sso" simpleSSO={simpleSSO} />
+    </div>
+
+    <CodePanel label="src/pages/simple-sso.astro" code={code} />
+  </div>
+</BaseLayout>
