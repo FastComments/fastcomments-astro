@@ -2,6 +2,10 @@
 
 A fast, full-featured live commenting widget for [Astro](https://astro.build), powered by [FastComments](https://fastcomments.com).
 
+## Live Demo
+
+Try every widget live at <https://fastcomments.com/commenting-system-for-astro>.
+
 ## Live Showcase
 
 To see every widget and flow running locally against the public `demo` tenant, clone the repo and run:
