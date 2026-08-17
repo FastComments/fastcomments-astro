@@ -4,7 +4,7 @@ A fast, full-featured live commenting widget for [Astro](https://astro.build), p
 
 ## Live Demo
 
-Try every widget live at <https://fastcomments.com/commenting-system-for-astro>.
+Try every widget live at <https://fastcomments.com/commenting-system-for-astro/>.
 
 ## Live Showcase
 
